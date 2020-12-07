@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+    Cloud2020-88730:        
+        image: postgres:11
+        environment:
+            POSTGRES_USER: mkrawiec
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: mkrawiec_db
+        networks:
+            Bridge-Zadanie-1:
+                ipv4_address: 10.0.10.3
+        ports: 
+            - 5432:5432
+        expose:
+            - 5432
+        
+    app:
+        build: 
+            context: ./app
+        depends_on:
+            - Cloud2020-88730
+        restart: on-failure
+        networks:
+            - Bridge-Zadanie-1
+        stdin_open: true
+        tty: true            
+networks: 
+  Bridge-Zadanie-1:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: 10.0.10.0/24
