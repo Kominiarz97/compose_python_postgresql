@@ -42,7 +42,7 @@ while number!=5:
     if number == 1:
         imie = input("Imie: ")
         nazwisko = input("Nazwisko: ")
-        cur.execute('INSERT INTO "Uzytkownicy" ("Imie", "Nazwisko") VALUES ("Imie", "Nazwisko" VALUES (%s, %s);',(imie, nazwisko))
+        cur.execute('INSERT INTO "Uzytkownicy" ("Imie", "Nazwisko") VALUES (%s, %s);',(imie, nazwisko))
         conn.commit()
     elif number == 2:
         try:
