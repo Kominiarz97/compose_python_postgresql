@@ -16,11 +16,11 @@ services:
             - 5432
         
     app:
-        build: 
-            context: ./app
+        image: kominiarz97/cloud_final:latest
         depends_on:
             - Cloud2020-88730
         restart: on-failure
+        container_name: cloud_final
         networks:
             - Bridge-Zadanie-1
         stdin_open: true
